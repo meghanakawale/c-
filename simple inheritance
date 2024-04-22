@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+class Person{
+        string name;
+        int mobile_no;
+        string email_id;
+
+
+ public:
+         void display()
+{
+        cout<<"Enter the name"<<name;
+        cout<<"Enter mobile_no"<<mobile_no;
+        cout<<"Enter email id"<<email_id;
+
+}
+};
+
+class Stud:public Person{
+
+        int roll_no;
+        int grade;
+
+
+public:
+         void getdata()
+{
+        cout<<"Enter the roll no :"<<roll_no;
+        cout<<"Enter grade :"<<grade;
+
+}
+
+public:
+        void dis1()
+{
+        cout<<"roll no="<<roll_no;
+        cout<<"grade="<<grade;
+}
+};
+
+
+class Faculty:public Person{
+        int emp_id;
+        int salary;
+
+
+
+
+public:
+         void putdata()
+{
+        cout<<"Enter the employee id"<<emp_id;
+        cout<<"Enter the salary :"<<salary;
+
+}
+
+public:
+        void dis2()
+{
+        cout<<"emp_id="<<emp_id;
+        cout<<"salary="<<salary;
+}
+};
+int main()
+{
+        Stud s;
+        s.display();
+        s.getdata();
+        s.dis1();
+        Faculty f;
+        f.display();
+        f.putdata();
+        f.dis2();
+
+
+}
+
+
