@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Date {
+private:
+    int day;
+    int month;
+    int year;
+
+public:
+    // No argument constructor
+    Date() : day(1), month(1), year(2000) {}
+
+    // Parameterized constructor
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+
+    // Function to accept date from user
+    void acceptDate() {
+        cout << "Enter day, month, and year (separated by spaces): ";
+        cin >> day >> month >> year;
+    }
+
+    // Function to display date in different formats
+    void displayDate() {
+        cout << "Date in dd-mm-yyyy format: " << day << "-" << month << "-" << year << endl;
+        cout << "Date in dd-MMM-yyyy format: " << day << "-" << getMonthAbbreviation(month) << "-" << year << endl;
+        cout << "Date in dd/mm/yy format: " << day << "/" << month << "/" << (year % 100) << endl;
+    }
+
+    // Function to calculate difference between two dates
+    int dateDifference(const Date& d2) {
+        int days1 = day + month * 30 + year * 365;
+        int days2 = d2.day + d2.month * 30 + d2.year * 365;
+        return days2 - days1;
+    }
+
+    // Function to increment day and month
+    void incrementDayMonth() {
+        day++;
+        if (day > 30) {
+            day = 1;
+            month++;
+            if (month > 12) {
+                month = 1;
+                year++;
+            }
+        }
+    }
+
+private:
+    // Function to get month abbreviation
+    string getMonthAbbreviation(int m) {
+        switch (m) {
+            case 1: return "JAN";
+            case 2: return "FEB";
+            case 3: return "MAR";
+            case 4: return "APR";
+            case 5: return "MAY";
+            case 6: return "JUN";
+            case 7: return "JUL";
+            case 8: return "AUG";
+            case 9: return "SEP";
+            case 10: return "OCT";
+            case 11: return "NOV";
+            case 12: return "DEC";
+            default: return "";
+        }
+    }
+};
+
+int main() {
+    Date d1, d2;
+   
+    cout << "Enter date 1:\n";
+    d1.acceptDate();
+
+    cout << "Enter date 2:\n";
+    d2.acceptDate();
+
+    cout << "Date 1:\n";
+    d1.displayDate();
+
+    cout << "Date 2:\n";
+    d2.displayDate();
+
+    cout << "Difference between dates: " << d1.dateDifference(d2) << " days\n";
+
+    cout << "Incrementing date 1 by one day and month:\n";
+    d1.incrementDayMonth();
+    d1.displayDate();
+
+    return 0;
+}
